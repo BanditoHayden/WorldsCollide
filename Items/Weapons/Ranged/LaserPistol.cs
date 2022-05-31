@@ -5,6 +5,7 @@ using Terraria.GameContent.Creative;
 using Terraria.ModLoader;
 using WorldsCollide.Projectiles.Ranged;
 using WorldsCollide.Items.Ammo;
+using Terraria.Audio;
 using WorldsCollide.Items.Materials;
 
 namespace WorldsCollide.Items.Weapons.Ranged
@@ -15,7 +16,7 @@ namespace WorldsCollide.Items.Weapons.Ranged
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             DisplayName.SetDefault("Laser Pistol");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("War never changes");
         }
         public override void SetDefaults()
         {
@@ -29,7 +30,13 @@ namespace WorldsCollide.Items.Weapons.Ranged
             Item.useAnimation = 15;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noUseGraphic = false;
-            Item.UseSound = SoundLoader.GetLegacySoundSlot(Mod, "Sounds/Item/LaserPistolFire").WithVolume(0.3f);
+           
+            Item.UseSound = new SoundStyle($"{nameof(WorldsCollide)}/Assets/Sounds/Items/Guns/LaserPistolFire")
+            {
+                Volume = 0.9f,
+                PitchVariance = 0.2f,
+                MaxInstances = 3,
+            };
             Item.autoReuse = false;
             // Weapon Properties
             Item.damage = 10;

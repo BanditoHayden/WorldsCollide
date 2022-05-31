@@ -15,7 +15,7 @@ namespace WorldsCollide.Items.Weapons.Ranged
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             DisplayName.SetDefault("Laser Rifle");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("Done and got me down");
         }
         public override void SetDefaults()
         {

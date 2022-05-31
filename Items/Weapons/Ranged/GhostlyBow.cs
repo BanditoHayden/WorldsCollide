@@ -16,7 +16,7 @@ namespace WorldsCollide.Items.Weapons.Ranged
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             DisplayName.SetDefault("Ghostly Bow");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("look another line\nConverts wooden arrows to ghostly arrows");
         }
         public override void SetDefaults()
         {
