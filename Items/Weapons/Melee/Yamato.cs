@@ -12,7 +12,7 @@ namespace WorldsCollide.Items.Weapons.Melee
     {
         public override void SetStaticDefaults()
         {
-            base.SetStaticDefaults();
+            Tooltip.SetDefault("I am the storm that is approaching");
         }
         public override void SetDefaults()
         {
@@ -35,7 +35,7 @@ namespace WorldsCollide.Items.Weapons.Melee
             Item.autoReuse = false;
             // Weapon Properties
             Item.damage = 10;
-            Item.knockBack = 3.6f;
+            Item.knockBack = 0f;
             Item.DamageType = DamageClass.Melee;
             // Projectile Properties
             Item.shoot = ModContent.ProjectileType<YamatoSlash>();

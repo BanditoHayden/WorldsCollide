@@ -9,7 +9,7 @@ namespace WorldsCollide.Items.Weapons.Melee
     {
         public override void SetStaticDefaults()
         {
-            base.SetStaticDefaults();
+            Tooltip.SetDefault("Pull my Devil Trigger");
         }
         public override void SetDefaults()
         {
