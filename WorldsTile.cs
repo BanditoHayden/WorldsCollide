@@ -17,7 +17,7 @@ namespace WorldsCollide
                 {
                     if (Main.rand.NextBool(20)&& modPlayer.Pickaxe && !fail)
                     {
-                        int possibleitems = Main.rand.Next(new int[] { 11, 12, 13, 14, 699, 700, 701, 702, 999, 182, 178, 179, 177, 180, 181 });
+                        int possibleitems = Main.rand.Next(new int[] { 177, 178, 179, 180, 181, 182 });
                         Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, possibleitems);
                     }
                 }
