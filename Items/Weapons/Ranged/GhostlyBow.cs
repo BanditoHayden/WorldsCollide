@@ -16,7 +16,7 @@ namespace WorldsCollide.Items.Weapons.Ranged
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             DisplayName.SetDefault("Ghostly Bow");
-            Tooltip.SetDefault("look another line\nConverts wooden arrows to ghostly arrows");
+            Tooltip.SetDefault("Who you gonna call?\nConverts wooden arrows to ghostly arrows");
         }
         public override void SetDefaults()
         {
@@ -33,7 +33,7 @@ namespace WorldsCollide.Items.Weapons.Ranged
             Item.UseSound = SoundID.Item5;
             Item.autoReuse = false;
             // Weapon Properties
-            Item.damage = 10;
+            Item.damage = 12;
             Item.knockBack = 3.6f;
             Item.DamageType = DamageClass.Ranged;
             // Projectile Properties
@@ -52,8 +52,15 @@ namespace WorldsCollide.Items.Weapons.Ranged
                  type = ModContent.ProjectileType<GhostArrow>(); // or ProjectileID.FireArrow;
              }
          }
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+           .AddIngredient(ModContent.ItemType<GhostlyCloth>(), 5)
+           .AddIngredient(ItemID.Wood, 15)
+           .AddTile(TileID.WorkBenches)
+           .Register();
+        }
 
 
-
-    }
+        }
 }
