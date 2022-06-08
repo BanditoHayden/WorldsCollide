@@ -16,7 +16,7 @@ namespace WorldsCollide.Items.Weapons.Melee
         {
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("[c/8b0000:It is designed to resemble Death's scythe]");
         }
         public override void SetDefaults()
         {
