@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using Terraria.Utilities;
 using WorldsCollide.Items.Weapons.Melee;
 
-namespace WorldsCollide
+namespace WorldsCollide.Assets.Common
 {
     public static class Helpers
     {
