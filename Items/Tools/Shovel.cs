@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using WorldsCollide.Items.Materials;
+using WorldsCollide.Assets.Common;
 
 namespace WorldsCollide.Items.Tools
 {
