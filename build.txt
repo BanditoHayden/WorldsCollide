@@ -1,0 +1,3 @@
+displayName = Worlds Collide
+author = Bandito
+version = 0.1
