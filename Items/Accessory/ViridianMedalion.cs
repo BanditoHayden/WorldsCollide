@@ -23,5 +23,13 @@ namespace WorldsCollide.Items.Accessory
             player.GetDamage(DamageClass.Generic) += 0.05f;
             player.moveSpeed += 0.05f;
         }
+         public override void AddRecipes()
+        {
+            CreateRecipe()
+            .AddIngredient(ModContent.ItemType<SlimeDust>(), 30)
+            .AddRecipeGroup(RecipeGroupID.IronBar, 7)
+            .AddTile(TileID.Anvils)
+            .Register();
+        }
     }
 }
