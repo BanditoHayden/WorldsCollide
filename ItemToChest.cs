@@ -1,4 +1,3 @@
-﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ using WorldsCollide.Items.Weapons.Melee;
 
 namespace WorldsCollide
 {
-    public class Sus : ModSystem
+    public class ItemToChest : ModSystem
     {
 		public override void PostWorldGen()
 		{
@@ -65,17 +64,6 @@ namespace WorldsCollide
 					}
 				}
 			}
-
-
-
-
-
-
-
-
-
-
-
 		}
     }
 }
