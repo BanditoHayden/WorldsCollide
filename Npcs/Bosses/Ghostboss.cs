@@ -51,81 +51,8 @@ namespace WorldsCollide.Npcs.Bosses
         }
         public override void AI()
         {
-            timer++;
-            choice = 0;
-            Player player = Main.player[NPC.target];
-            NPC.TargetClosest(true);
-            if (timer == 60)
-            {
-                chase();
-                Main.NewText("Chase");
-            }
-            if (timer == 120)
-            {
-                BlastAttack();
-                Main.NewText("Blast Attack");
-            }
-            if (timer == 180)
-            {
-                chase();
-                Main.NewText("Chase");
-            }
-            if (timer == 300)
-            {
-                BlastAttack();
-                Main.NewText("Blast Attacl");
-            }
-            if (timer == 360)
-            {
-                chase();
-                Main.NewText("Chase");
-            }
-            // Barrage
-            if (timer == 420)
-            {
-                BlastBarrage();
-                Main.NewText("Barrage");
-
-            }
-            if (timer == 480)
-            {
-                choice = Main.rand.Next(1, 3);
-                Main.NewText("Choosing");
-
-            }
-            if (choice == 1)
-            {
-                makebaby();
-                timer = 1000;
-                Main.NewText("Choice 1");
-            }
-            if (choice == 2)
-            {
-                fastchase();
-                timer = 1000;
-                Main.NewText("Choice 2");
-            }
-            if (choice == 3)
-            {
-                timer = 1000;
-                Main.NewText("Choice 3");
-            }
-            if (timer == 1120)
-            {
-                timer = 0;
-            }
-
-            if (!player.active || player.dead)
-            {
-                //if the player we are currently targeting is dead or not "active"(meaning the player is no longer playing)
-                NPC.TargetClosest(false);//try to find a new target
-                player = Main.player[NPC.target];//get the new target we just got
-                if (!player.active || player.dead)
-                {
-                    // if the new one is also dead, then we know there is no active player, and can despawn 
-                    NPC.active = false;//set ourselves to inactive, this makes it so we don't drop loot and instead disappear
-                }
-            }
+           
+            
         }
 
 
