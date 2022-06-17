@@ -22,18 +22,14 @@ namespace WorldsCollide
        
         public override void ExtractinatorUse(int extractType, ref int resultType, ref int resultStack)
         {
-            List<short> OreList = new List<short> { ItemID.CopperOre, ItemID.TinOre, ItemID.IronOre, ItemID.LeadOre, ItemID.SilverOre, ItemID.TungstenOre, ItemID.GoldOre, ItemID.PlatinumOre };
+           
             if (extractType == 0)
             {
                 if (Main.rand.NextBool(5))
                  resultType = ModContent.ItemType<Plastic>();
                 resultStack = 1;
             }
-            if (extractType == ItemID.StoneBlock)
-            {
-                resultType = OreList[Main.rand.Next(OreList.Count)];
-                resultStack = Main.rand.Next(2);
-            }
+          
            /* if (extractType == ItemID.IronBar)
             {
                 if (Main.rand.NextBool(2))
