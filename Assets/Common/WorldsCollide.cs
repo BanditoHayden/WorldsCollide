@@ -20,5 +20,13 @@ namespace WorldsCollide.Assets.Common
                 Filters.Scene["Shockwave"].Load();
             }
         }
+    	public override void AddRecipes()
+        {
+            CreateRecipe(ItemID.SlimeStaff, 1)
+            .AddIngredient(ModContent.ItemType<SlimeDust>(), 50)
+            .AddRecipeGroup(RecipeGroupID.Wood, 12)
+            .AddTile(TileID.WorkBenches)
+            .Register();
+        }  
     }
 }
