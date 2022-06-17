@@ -17,10 +17,7 @@ namespace WorldsCollide.Assets.Common
     {
         public bool Pickaxe = false;
         public bool StrengthMedallion;
-        private void ResetItems()
-        {
-            Pickaxe = false; 
-        }
+        
         public override void ResetEffects()
         {
             StrengthMedallion = false;
