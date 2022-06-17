@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using WorldsCollide.Items.Weapons.Melee;
 
-namespace WorldsCollide
+namespace WorldsCollide.Assets.Common
 {
     public class ItemToChest : ModSystem
     {
