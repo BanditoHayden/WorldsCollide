@@ -55,6 +55,10 @@ namespace WorldsCollide
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeStaff>(), 30));
             }
+             if (npc.type == NPCID.BlueSlime)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SlimeDust>(), 5));
+            }
         }
     }
 }
