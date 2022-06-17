@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using WorldsCollide.Assets.Common;
 
 namespace WorldsCollide
 {
