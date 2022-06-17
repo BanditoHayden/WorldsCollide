@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using WorldsCollide.Items.Materials;
 
 namespace WorldsCollide.Items.Tools
 {
@@ -9,17 +10,17 @@ namespace WorldsCollide.Items.Tools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Shovel");
-            Tooltip.SetDefault("Has a chance to reward gems when mining");
+            Tooltip.SetDefault("As seen in Grease\nHas a chance to reward gems and ores when mining");
         }
 		public override void SetDefaults()
 		{
 			Item.width = 30;
 			Item.height = 30;
-			//Item.value = 12000;
+			
 			Item.rare = ItemRarityID.Blue;
 			Item.pick = 35;
 			Item.damage = 5;
-			Item.knockBack = 3;
+			Item.knockBack = 1;
 			Item.useStyle = ItemUseStyleID.Swing;
 			Item.useTime = 16;
 			Item.useAnimation = 20;
@@ -33,11 +34,18 @@ namespace WorldsCollide.Items.Tools
 			WorldsPlayer modPlayer = player.GetWorldPlayer();
 			modPlayer.Pickaxe = true;
 		}
+		public override void AddRecipes()
+		{
+			CreateRecipe()
+				.AddIngredient(ModContent.ItemType<Plastic>(), 7)
+				.AddTile(TileID.Anvils)
+				.Register();
+			
+		}
 
 
 
 
 
-
-    }
+	}
 }
