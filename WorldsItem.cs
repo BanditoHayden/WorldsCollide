@@ -11,14 +11,7 @@ namespace WorldsCollide
 {
     public class WorldsItem : GlobalItem
     {
-        public override void SetDefaults(Item item)
-        {
-            if (item.type == ItemID.Keybrand)
-            {
-                // Need to add a font override for this item name, and only this item name
-                item.SetNameOverride("Keyblade");
-            }
-        }
+        
        
         public override void ExtractinatorUse(int extractType, ref int resultType, ref int resultStack)
         {
@@ -81,8 +74,4 @@ namespace WorldsCollide
 
         }
     }
-
-
-
-        
 }
