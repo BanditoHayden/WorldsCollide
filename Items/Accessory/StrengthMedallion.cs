@@ -2,6 +2,8 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using WorldsCollide.Assets.Common;
+
 namespace WorldsCollide.Items.Accessory
 {
     public class StrengthMedallion : ModItem
