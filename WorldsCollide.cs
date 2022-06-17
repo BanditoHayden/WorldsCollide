@@ -20,18 +20,5 @@ namespace WorldsCollide
                 Filters.Scene["Shockwave"].Load();
             }
         }
-        public override void PostSetupContent()
-        {
-            ItemID.Sets.ExtractinatorMode[ItemID.StoneBlock] = ItemID.StoneBlock;
-        }
-
-
-
-
-
-
-
-
-
     }
 }
