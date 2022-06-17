@@ -3,7 +3,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace WorldsCollide
+namespace WorldsCollide.Assets.Common
 {
     public class WorldsTile : GlobalTile
     {
