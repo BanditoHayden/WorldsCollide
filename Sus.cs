@@ -54,7 +54,7 @@ namespace WorldsCollide
 					{
 						if (chest.item[inventoryIndex].type == ItemID.None)
 						{
-							if (Main.rand.NextBool(7))
+							if (Main.rand.NextBool(4))
 							{
 								chest.item[inventoryIndex].SetDefaults(Main.rand.Next(itemsToPlaceInLockedGoldenChests));
 							}

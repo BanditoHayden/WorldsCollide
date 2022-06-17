@@ -16,10 +16,27 @@ namespace WorldsCollide
     public class WorldsPlayer : ModPlayer
     {
         public bool Pickaxe = false;
+        public bool StrengthMedallion;
         private void ResetItems()
         {
             Pickaxe = false; 
         }
+        public override void ResetEffects()
+        {
+            StrengthMedallion = false;
+        }
+        public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
+        {
+            if (Helpers.Sets.IsAGreatsword[item.type])
+            {
+                if (StrengthMedallion)
+                {
+                    damage += 0.1f;
+
+                }
+            }
+        }
+
 
     }
 }
