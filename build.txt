@@ -1,3 +1,3 @@
-displayName = Worlds Collide
+displayName = WorldsCollide
 author = Bandito
 version = 0.1
