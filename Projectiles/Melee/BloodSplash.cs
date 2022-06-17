@@ -5,6 +5,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+
 namespace WorldsCollide.Projectiles.Melee
 {
     public class BloodSplash : ModProjectile
@@ -38,6 +39,7 @@ namespace WorldsCollide.Projectiles.Melee
 			{
 				Projectile.friendly = true;
 			}
+			
 		}
 		public override void Kill(int timeLeft)
 		{

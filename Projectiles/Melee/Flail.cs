@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria.Audio;
 using Terraria.GameContent;
 using ReLogic.Content;
+using WorldsCollide.Dusts;
 
 namespace WorldsCollide.Projectiles.Melee
 {
@@ -531,6 +532,17 @@ namespace WorldsCollide.Projectiles.Melee
 			}
 			return true;
 		}
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		{
+			for (int i = 0; i < 3; i++)
+			{
+				Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, ModContent.DustType<GhostDust>(), Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
+
+			}
+		}
+
+
 	}
+
 }
 

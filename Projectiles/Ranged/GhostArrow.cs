@@ -28,14 +28,21 @@ namespace WorldsCollide.Projectiles.Ranged
 			AIType = ProjectileID.WoodenArrowFriendly;
 			Projectile.DamageType = DamageClass.Ranged;
 			Projectile.friendly = true;
+			Projectile.alpha = 255;
 
 		}
-		public override bool PreDraw(ref Color lightColor)
+		public override void AI()
+		{
+			Projectile.ai[0] += 1f;
+			Fade();
+
+		}
+        /*public override bool PreDraw(ref Color lightColor)
 		{
 			Main.instance.LoadProjectile(Projectile.type);
 			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
 
-			// Redraw the projectile with the color not influenced by light
+
 			Vector2 drawOrigin = new Vector2(texture.Width * 0.5f, Projectile.height * 0.5f);
 			for (int k = 0; k < Projectile.oldPos.Length; k++)
 			{
@@ -45,7 +52,42 @@ namespace WorldsCollide.Projectiles.Ranged
 			}
 
 			return true;
+		*/
+        public override bool PreDraw(ref Color lightColor)
+        {
+			SpriteEffects spriteEffects = SpriteEffects.None;
+			if (Projectile.spriteDirection == -1)
+            {
+				spriteEffects = SpriteEffects.FlipHorizontally;
+            }
+			Texture2D texture = (Texture2D)ModContent.Request<Texture2D>(Texture);
+			int frameHeight = texture.Height / Main.projFrames[Projectile.type];
+			int startY = frameHeight * Projectile.frame;
+			float offsetX = 20f;
+			Rectangle sourceRectangle = new Rectangle(0, startY, texture.Width, frameHeight);
+			Vector2 origin = sourceRectangle.Size() / 2f;
+			origin.X = (float)(Projectile.spriteDirection == 1 ? sourceRectangle.Width - offsetX : offsetX);
+			Color drawColor = Projectile.GetAlpha(lightColor);
+			Main.EntitySpriteDraw(texture,
+				Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY),
+				sourceRectangle, drawColor, Projectile.rotation, origin, Projectile.scale, spriteEffects, 0);
+			return false;
 		}
-       
+        public void Fade()
+        {
+			if (Projectile.ai[0] <= 50)
+            {
+				Projectile.alpha -= 25;
+            }
+        if (Projectile.alpha < 100)
+            {
+				Projectile.alpha = 100;
+            }
+			return;
+		}
+	
+	
+	
+			
 	}
 }

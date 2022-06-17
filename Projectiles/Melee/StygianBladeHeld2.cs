@@ -8,10 +8,10 @@ using Terraria.ModLoader;
 
 namespace WorldsCollide.Projectiles.Melee
 {
-    public class MohgsTridentProjectile : ModProjectile
+    public class StygianBladeHeld2 : ModProjectile
     {
         protected virtual float HoldoutRangeMin => 48f;
-        protected virtual float HoldoutRangeMax => 140f;
+        protected virtual float HoldoutRangeMax => 550f;
 
         public override void SetStaticDefaults()
         {
@@ -22,7 +22,7 @@ namespace WorldsCollide.Projectiles.Melee
         {
 
             Projectile.CloneDefaults(ProjectileID.Spear); // Clone the default values for a vanilla spear. Spear specific values set for width, height, aiStyle, friendly, penetrate, tileCollide, scale, hide, ownerHitCheck, and melee.
-
+            Projectile.scale = 1.3f;
         }
         int dusttime;
         public override bool PreAI()
@@ -65,26 +65,10 @@ namespace WorldsCollide.Projectiles.Melee
                 // If sprite is facing right, rotate 135 degrees
                 Projectile.rotation += MathHelper.ToRadians(135f);
             }
-            if (Main.rand.NextBool(3))
-            {
-                Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.height, Projectile.width, DustID.Blood, Projectile.velocity.X * .2f, Projectile.velocity.Y * .2f, 200, Scale: 1.2f);
-                dust.noGravity = true;
-                dust.velocity += Projectile.velocity * 0.3f;
-                dust.velocity *= 0.2f;
-            }
-
+           
             return false; // Don't execute vanilla AI.
         }
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            Player player = Main.player[Projectile.owner];
-            var entitySource = Projectile.GetSource_FromThis();
-            Projectile.NewProjectile(entitySource, target.Center.X, target.Center.Y, Main.rand.Next(-10, 11) * .25f, Main.rand.Next(-10, -5) * .25f, ModContent.ProjectileType<BloodSplash>(), 30, 0f, Projectile.owner);
-            Vector2 newVelocity = Projectile.velocity.RotatedByRandom(MathHelper.ToRadians(15));
-           
-          //  ParticleManager.NewParticle(Projectile.Center, newVelocity, ParticleManager.NewInstance<EmberParticle>(), Color.Red, 1, player.whoAmI, Projectile.whoAmI);
+      
 
-        }
-
-    } 
+    }
 }

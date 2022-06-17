@@ -11,16 +11,16 @@ using System;
 
 namespace WorldsCollide.Projectiles.Melee
 {
-    public class EternalFlamesProjectile : ModProjectile
+    public class CrimsonRing : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-       
-           
+
+
         }
         public override void SetDefaults()
         {
-           Projectile.ignoreWater = false;
+            Projectile.ignoreWater = false;
             Projectile.width = 40;
             Projectile.penetrate = -1;
             Projectile.height = 40;
@@ -33,16 +33,12 @@ namespace WorldsCollide.Projectiles.Melee
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 3; i++)
             {
-                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Flare, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
+                Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Bone, Projectile.velocity.X * 0.5f, Projectile.velocity.Y * 0.5f);
 
             }
-           
-            target.AddBuff(BuffID.OnFire, 360, false);
         }
-        
-
 
     }
 }
