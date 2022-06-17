@@ -7,7 +7,7 @@ using WorldsCollide.Items.Tools;
 using WorldsCollide.Items.Weapons.Magic;
 using WorldsCollide.Items.Weapons.Melee;
 
-namespace WorldsCollide
+namespace WorldsCollide.Assets.Common
 {
     public class WorldsItem : GlobalItem
     {
