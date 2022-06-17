@@ -3,22 +3,25 @@ using Terraria.GameContent.Creative;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+
 using Terraria;
 using Microsoft.Xna.Framework;
 using WorldsCollide.Projectiles.Melee;
+using WorldsCollide.Dusts;
 
 namespace WorldsCollide.Items.Weapons.Melee
 {
-    public class Vendetta : ModItem
+    public class StygianBlade : ModItem
     {
         int currentAttack = 1;
         int fired;
+
 
         public override void SetStaticDefaults()
         {
 
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
-            Tooltip.SetDefault("[c/8b0000:It is designed to resemble Death's scythe]");
+            Tooltip.SetDefault("[c/ff8c00:The Blade of The Underworld]");
         }
         public override void SetDefaults()
         {
@@ -35,16 +38,16 @@ namespace WorldsCollide.Items.Weapons.Melee
             Item.useTime = 30;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = false;
-            Item.scale = 1.4f;
             // Weapon Properties
-            Item.damage = 30;
-            Item.knockBack = 6f;
-            Item.DamageType = DamageClass.Melee;
             Item.noMelee = true;
-            // Projectile Properties
-            Item.shoot = ModContent.ProjectileType<VendettaHeld>();
-            Item.shootSpeed = 10f;
+            Item.damage = 100;
+            Item.knockBack = 8.6f;
+            Item.DamageType = DamageClass.Melee;
+            Item.shoot = ModContent.ProjectileType<StygianBladeHeld>();
+            Item.shootSpeed = 4f;
+
         }
+      
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             fired++;
@@ -56,13 +59,16 @@ namespace WorldsCollide.Items.Weapons.Melee
             }
             if (fired == 3)
             {
-                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<VendettaHeld2>(), damage, knockback, player.whoAmI);
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<StygianBladeHeld2>(), damage, knockback, player.whoAmI); 
+            }            
+            if (fired == 4)
+            {
+                player.velocity += player.DirectionTo(Main.MouseWorld) * 10;
+                Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI, 1, dir);
                 fired = 0;
             }
             return false;
         }
-
-
-
+        
     }
 }

@@ -19,7 +19,7 @@ namespace WorldsCollide.Items.Ammo
 		public override void SetDefaults()
 		{
 			Item.width = 14; 
-			Item.damage = 8;
+			Item.damage = 6;
 			Item.DamageType = DamageClass.Ranged; 
 			Item.maxStack = 999;
 			Item.consumable = true;

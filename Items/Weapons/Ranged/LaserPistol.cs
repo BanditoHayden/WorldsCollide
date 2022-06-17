@@ -39,8 +39,8 @@ namespace WorldsCollide.Items.Weapons.Ranged
             };
             Item.autoReuse = false;
             // Weapon Properties
-            Item.damage = 10;
-            Item.knockBack = 3.6f;
+            Item.damage = 11;
+            Item.knockBack = 3f;
             Item.DamageType = DamageClass.Ranged;
             // Projectile Properties
             Item.shoot = ModContent.ProjectileType<LaserProj>();

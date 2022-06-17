@@ -19,7 +19,7 @@ namespace WorldsCollide.Items.Ammo
 		public override void SetDefaults()
 		{
 			Item.width = 14;
-			Item.damage = 8;
+			Item.damage = 3;
 			Item.DamageType = DamageClass.Ranged;
 			Item.maxStack = 999;
 			Item.consumable = true;
@@ -30,6 +30,13 @@ namespace WorldsCollide.Items.Ammo
 
 			Item.ammo = Item.type;
 		}
-		
+		public override void AddRecipes()
+		{
+			CreateRecipe(20)
+				.AddIngredient(ItemID.IronBar, 2)
+				.AddTile(TileID.Anvils)
+				.Register();
+		}
+
 	}
 }

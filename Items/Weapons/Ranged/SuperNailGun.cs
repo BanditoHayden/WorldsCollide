@@ -15,7 +15,7 @@ namespace WorldsCollide.Items.Weapons.Ranged
         {
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
             DisplayName.SetDefault("Super Nail-Gun");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("This isn't a tool!");
         }
         public override void SetDefaults()
         {

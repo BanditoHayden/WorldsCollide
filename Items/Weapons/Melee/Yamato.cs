@@ -12,7 +12,7 @@ namespace WorldsCollide.Items.Weapons.Melee
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("I am the storm that is approaching");
+            Tooltip.SetDefault("[c/465e95:Now I’m a little Motivated]\n[c/465e95:Has the power to separate man from demon]");
         }
         public override void SetDefaults()
         {
@@ -22,8 +22,8 @@ namespace WorldsCollide.Items.Weapons.Melee
             Item.height = 30;
             Item.scale = 1.0f;
             // Use Properties
-            Item.useTime = 15;
-            Item.useAnimation = 15;
+            Item.useTime = 60;
+            Item.useAnimation = 60;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.noUseGraphic = true;
             Item.UseSound = new SoundStyle($"{nameof(WorldsCollide)}/Assets/Sounds/Items/Guns/Unsheathe")

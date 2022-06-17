@@ -35,8 +35,8 @@ namespace WorldsCollide.Items.Weapons.Melee
             Item.useTime = 50;
             Item.useAnimation = 50;
             // Weapon Properties
-            Item.damage = 40;
-            Item.knockBack = 3.6f;
+            Item.damage = 32;
+            Item.knockBack = 4f;
             Item.DamageType = DamageClass.Melee;
             // Projectile Properties
             Item.shoot = ModContent.ProjectileType<MohgsTridentProjectile>();
