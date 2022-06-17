@@ -11,7 +11,7 @@ using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace WorldsCollide
+namespace WorldsCollide.Assets.Common
 {
     public class WorldsPlayer : ModPlayer
     {
