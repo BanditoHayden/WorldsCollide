@@ -17,10 +17,12 @@ namespace WorldsCollide.Assets.Common
     {
         public bool Pickaxe = false;
         public bool StrengthMedallion;
-        
+        public bool Diplopia;
+
         public override void ResetEffects()
         {
             StrengthMedallion = false;
+            Diplopia = false;
         }
         public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
         {
