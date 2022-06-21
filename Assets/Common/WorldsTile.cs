@@ -25,11 +25,11 @@ namespace WorldsCollide.Assets.Common
         }
        public override bool Drop(int i, int j, int type)
         {
-			Player player = Main.LocalPlayer;
-			WorldsPlayer modPlayer = player.GetWorldPlayer();
-			if (TileID.Sets.Ore[type] && modPlayer.Diplopia)
-            {
-				DropTheGoods(i, j, type);
+		Player player = Main.LocalPlayer;
+		WorldsPlayer modPlayer = player.GetWorldPlayer();
+		if (TileID.Sets.Ore[type] && modPlayer.Diplopia)
+        	 	{
+			 DropTheGoods(i, j, type);
 			}
 			return true;
 		}
@@ -40,7 +40,7 @@ namespace WorldsCollide.Assets.Common
 			{
 				if (TileID.Sets.Ore[type] && WorldsCollide.oreTileToItem.TryGetValue(type, out int item))
 				{
-					Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, item, Stack: 1);
+				  Item.NewItem(new EntitySource_TileBreak(i, j), i * 16, j * 16, 32, 32, item, Stack: 1);
 				}
 			}
 			else
@@ -50,11 +50,11 @@ namespace WorldsCollide.Assets.Common
 					int drop = modTile.ItemDrop;
 					if (drop > 0)
 					{
-						Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, drop, 1);
+					  Item.NewItem(WorldGen.GetItemSource_FromTileBreak(i, j), i * 16, j * 16, 16, 16, drop, 1);
 					}
 				}
 			}
 
 		}
-    }
+    }	
 }
