@@ -10,6 +10,8 @@ namespace WorldsCollide.Assets.Common
 {
 	public class WorldsCollide : Mod
 	{
+	public static Dictionary<int, int> oreTileToItem;
+        public static Dictionary<int, int> oreItemToTile;
         public override void Load()
         {
             Helpers.Sets.Initialize();
@@ -19,8 +21,36 @@ namespace WorldsCollide.Assets.Common
                 Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.VeryHigh);
                 Filters.Scene["Shockwave"].Load();
             }
+	    oreTileToItem = new Dictionary<int, int>();
+            oreItemToTile = new Dictionary<int, int>();
         }
-	 public static RecipeGroup Fishes;
+	public override void Unload()
+        {
+            oreTileToItem = null;
+            oreItemToTile = null;
+        }
+        public override void PostSetupContent()
+        {
+            for (int item = 0; item < ItemLoader.ItemCount; item++)
+            {
+                Item test = new Item();
+                test.SetDefaults(item);
+                int tile = test.createTile;
+                if (tile > -1 && tile < TileLoader.TileCount && TileID.Sets.Ore[tile])
+                {
+                    if (!oreTileToItem.ContainsKey(tile))
+                    {
+                        oreTileToItem.Add(tile, item);
+                    }
+
+                    if (!oreItemToTile.ContainsKey(item))
+                    {
+                        oreItemToTile.Add(item, tile);
+                    }
+                }
+            }
+        }
+	public static RecipeGroup Fishes;
         public override void AddRecipeGroups()
         {
             // Create a recipe group and store it
