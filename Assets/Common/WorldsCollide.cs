@@ -36,12 +36,13 @@ namespace WorldsCollide.Assets.Common
             .AddRecipeGroup(RecipeGroupID.Wood, 12)
             .AddTile(TileID.WorkBenches)
             .Register();
-	    
-	    CreateRecipe(ModContent.ItemType<Chum>(), 3)
+
+            CreateRecipe(ModContent.ItemType<Chum>(), 3)
            .AddRecipeGroup("WorldsCollide:Fishes", 1)
            .AddTile(TileID.Extractinator)
            .Register();
-	      CreateRecipe(ItemID.HighTestFishingLine, 1)
+
+            CreateRecipe(ItemID.HighTestFishingLine, 1)
             .AddIngredient(ModContent.ItemType<Chum>(), 30)
             .AddIngredient(ItemID.Cobweb, 20)
             .AddTile(TileID.TinkerersWorkbench)
@@ -53,11 +54,11 @@ namespace WorldsCollide.Assets.Common
            .AddTile(TileID.TinkerersWorkbench)
            .Register();
 
-         CreateRecipe(ItemID.AnglerEarring, 1)
-        .AddIngredient(ModContent.ItemType<Chum>(), 30)
-         .AddRecipeGroup(RecipeGroupID.IronBar, 12)
-        .AddTile(TileID.TinkerersWorkbench)
-        .Register();
+           CreateRecipe(ItemID.AnglerEarring, 1)
+           .AddIngredient(ModContent.ItemType<Chum>(), 30)
+           .AddRecipeGroup(RecipeGroupID.IronBar, 12)
+           .AddTile(TileID.TinkerersWorkbench)
+           .Register();
 
             CreateRecipe(ItemID.FishermansGuide, 1)
            .AddIngredient(ModContent.ItemType<Chum>(), 30)
@@ -65,20 +66,22 @@ namespace WorldsCollide.Assets.Common
            .Register();
 
             CreateRecipe(ItemID.Sextant, 1)
-       .AddIngredient(ModContent.ItemType<Chum>(), 30)
-        .AddRecipeGroup(RecipeGroupID.IronBar, 12)
-       .AddTile(TileID.TinkerersWorkbench)
-       .Register();
+           .AddIngredient(ModContent.ItemType<Chum>(), 30)
+           .AddRecipeGroup(RecipeGroupID.IronBar, 12)
+           .AddTile(TileID.TinkerersWorkbench)
+           .Register();
+
             CreateRecipe(ItemID.WeatherRadio, 1)
-       .AddIngredient(ModContent.ItemType<Chum>(), 30)
-        .AddRecipeGroup(RecipeGroupID.IronBar, 12)
-       .AddTile(TileID.TinkerersWorkbench)
-       .Register();
+           .AddIngredient(ModContent.ItemType<Chum>(), 30)
+           .AddRecipeGroup(RecipeGroupID.IronBar, 12)
+           .AddTile(TileID.TinkerersWorkbench)
+           .Register();
+
             CreateRecipe(ItemID.LavaFishingHook, 1)
-       .AddIngredient(ModContent.ItemType<Chum>(), 30)
-       .AddIngredient(ItemID.Obsidian, 30)
-       .AddTile(TileID.TinkerersWorkbench)
-       .Register();
-        }  
+            .AddIngredient(ModContent.ItemType<Chum>(), 30)
+            .AddIngredient(ItemID.Obsidian, 30)
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
+        }
     }
 }
