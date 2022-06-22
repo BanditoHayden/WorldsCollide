@@ -55,15 +55,7 @@ namespace WorldsCollide.Assets.Common
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeStaff>(), 30));
             }
-             if (npc.type == NPCID.BlueSlime)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SlimeDust>(), 5));
-            }
-             if (npc.type == NPCID.SlimedZombie)
-            {
-                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SlimeDust>(), 5));
-            }
-        
+            
         }
     }
 }
