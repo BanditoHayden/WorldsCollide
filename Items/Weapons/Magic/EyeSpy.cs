@@ -25,7 +25,6 @@ namespace WorldsCollide.Items.Weapons.Magic
 			Item.height = 40;
 			Item.useTime = 50;
 			Item.useAnimation = 50;
-			Item.noUseGraphic = true;
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.noMelee = true;
 			Item.knockBack = 6;
