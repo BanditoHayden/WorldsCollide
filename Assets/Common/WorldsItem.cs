@@ -69,7 +69,13 @@ namespace WorldsCollide.Assets.Common
                     player.QuickSpawnItem(newsource, ModContent.ItemType<EyeSpy>());
                 }
             }
-
+             if (context == "bossBag" && arg == ItemID.KingSlimeBossBag)
+            {
+                if (spawnChance < 0.22f)
+                {
+                    player.QuickSpawnItem(newsource, ItemID.SlimeStaff);
+                }
+            }
 
 
         }
