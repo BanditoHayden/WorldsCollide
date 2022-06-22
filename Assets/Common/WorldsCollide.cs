@@ -61,11 +61,7 @@ namespace WorldsCollide.Assets.Common
         }
     	public override void AddRecipes()
         {
-            CreateRecipe(ItemID.SlimeStaff, 1)
-            .AddIngredient(ModContent.ItemType<SlimeDust>(), 50)
-            .AddRecipeGroup(RecipeGroupID.Wood, 12)
-            .AddTile(TileID.WorkBenches)
-            .Register();
+           
 
             CreateRecipe(ModContent.ItemType<Chum>(), 3)
            .AddRecipeGroup("WorldsCollide:Fishes", 1)
