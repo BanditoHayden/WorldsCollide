@@ -8,7 +8,7 @@ namespace WorldsCollide.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("+5% Damage\n+5% Movement Speed");
+            Tooltip.SetDefault("+5% Movement Speed");
         }
 
         public override void SetDefaults()
@@ -20,7 +20,6 @@ namespace WorldsCollide.Items.Accessory
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetDamage(DamageClass.Generic) += 0.05f;
             player.moveSpeed += 0.05f;
         }
          public override void AddRecipes()
