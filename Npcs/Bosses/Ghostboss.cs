@@ -4,8 +4,10 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent.Bestiary;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using WorldsCollide.Items.Consumables;
 using WorldsCollide.Projectiles.Hostile;
 
 namespace WorldsCollide.Npcs.Bosses
@@ -17,7 +19,7 @@ namespace WorldsCollide.Npcs.Bosses
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 2;
-            DisplayName.SetDefault("Hand");
+            DisplayName.SetDefault("Phantom Hand");
             NPCID.Sets.NPCBestiaryDrawModifiers value = new NPCID.Sets.NPCBestiaryDrawModifiers(0)
             {
                 Velocity = 1f
@@ -28,9 +30,9 @@ namespace WorldsCollide.Npcs.Bosses
         {
             NPC.width = 36;
             NPC.height = 55;
-            NPC.damage = 14;
-            NPC.defense = 6;
-            NPC.lifeMax = 200;
+            NPC.damage = 30;
+            NPC.defense = 10;
+            NPC.lifeMax = 5000;
             //NPC.HitSound = SoundID.NPCHit1;
             NPC.DeathSound = SoundID.NPCDeath2;
             NPC.value = 60f;
@@ -44,6 +46,7 @@ namespace WorldsCollide.Npcs.Bosses
         }
         int timer;
         int choice;
+        
         float Timer
         {
             get => NPC.ai[1];
@@ -51,8 +54,114 @@ namespace WorldsCollide.Npcs.Bosses
         }
         public override void AI()
         {
-           
+            timer++;
+            choice = 0;
+            Player player = Main.player[NPC.target];
+            NPC.TargetClosest(true);
+            if (timer == 60)
+            {
+                chase();
+                Main.NewText("Chase");
+            }
+            if (timer == 120)
+            {
+                BlastAttack();
+                Main.NewText("Blast Attack");
+            }
+            if (timer == 180)
+            {
+                chase();
+                Main.NewText("Chase");
+            }
+            if (timer == 240)
+            {
+                choice = Main.rand.Next(7, 9); 
+                Main.NewText(choice);
+
+            }
+            if (timer == 420)
+            {
+                chase();
+                Main.NewText("Chase");
+            }
+            // Barrage
+            if (timer == 480)
+            {
+                BlastBarrage();
+                Main.NewText("Barrage");
+
+            }
+            if (timer == 540)
+            {
+                choice = Main.rand.Next(1, 4);
+                Main.NewText("Choosing");
+
+            }
             
+            if (choice == 1)
+            {
+                makebaby();
+                timer = 1000;
+                Main.NewText("Choice 1");
+            }
+            if (choice == 2)
+            {
+                fastchase();
+                timer = 1000;
+                Main.NewText("Choice 2");
+            }
+            if (choice == 3)
+            {
+                CursedBarrage();
+                timer = 1000;
+                Main.NewText("Choice 3");
+            }
+            if (choice == 4)
+            {
+                DarkBarrage();
+                timer = 1000;
+                Main.NewText("Choice 4");
+            }
+            if (choice == 5)
+            { 
+                ConfusedBarrage();
+                timer = 1000;
+                Main.NewText("Choice 5");
+            }
+            if (choice == 7)
+            {
+                timer = 360;
+                CursedBlast();
+                Main.NewText("Choice 4");
+            }
+            if (choice == 8)
+            {
+                timer = 360;
+                DarkBlast();
+                Main.NewText("Choice 5");
+            }
+            if (choice == 9)
+            {
+                timer = 360;
+                SlowBlast();
+                Main.NewText("Choice 6");
+            }
+            if (timer == 1060)
+            {
+                timer = 0;
+            }
+
+            if (!player.active || player.dead)
+            {
+                //if the player we are currently targeting is dead or not "active"(meaning the player is no longer playing)
+                NPC.TargetClosest(false);//try to find a new target
+                player = Main.player[NPC.target];//get the new target we just got
+                if (!player.active || player.dead)
+                {
+                    // if the new one is also dead, then we know there is no active player, and can despawn 
+                    NPC.active = false;//set ourselves to inactive, this makes it so we don't drop loot and instead disappear
+                }
+            }
         }
 
 
@@ -91,11 +200,24 @@ namespace WorldsCollide.Npcs.Bosses
         {
             var newsource = NPC.GetSource_FromAI();
             Vector2 spawnAt = NPC.Center + new Vector2(0f, (float)NPC.height / 2f);
-            const int babies = 4;
-            for (int i = 0; i < babies; i++)
-            
+            if (Main.expertMode)
             {
-                NPC.NewNPC(newsource, (int)spawnAt.X, (int)spawnAt.Y, NPCID.Ghost);
+                for (int i = 0; i < 5; i++)
+                {
+                    NPC.NewNPC(newsource, (int)spawnAt.X, (int)spawnAt.Y, +Main.rand.Next(10, 100), NPCID.Ghost);
+                }
+            }
+            if (Main.masterMode)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    NPC.NewNPC(newsource, (int)spawnAt.X, (int)spawnAt.Y, + Main.rand.Next(10, 100), NPCID.Ghost);
+                }
+            }
+            else
+            for (int i = 0; i < 3; i++)
+            {
+                    NPC.NewNPC(newsource, (int)spawnAt.X + Main.rand.Next(1,200), (int)spawnAt.Y + Main.rand.Next(1,15), NPCID.Ghost);
             }
         }
         private void chase()
@@ -118,6 +240,30 @@ namespace WorldsCollide.Npcs.Bosses
             NPC.velocity = Vector2.Zero;
             Projectile.NewProjectile(entitySource, NPC.Center, NPC.DirectionTo(player.Center) * 5, ModContent.ProjectileType<GhostBlast>(), damage, 0f, Main.myPlayer);
         }
+        private void CursedBlast()
+        {
+            Player player = Main.player[NPC.target];
+            int damage = NPC.damage;
+            var entitySource = NPC.GetSource_FromAI();
+            NPC.velocity = Vector2.Zero;
+            Projectile.NewProjectile(entitySource, NPC.Center, NPC.DirectionTo(player.Center) * 6, ModContent.ProjectileType<CursedBlast>(), damage, 0f, Main.myPlayer);
+        }
+        private void DarkBlast()
+        {
+            Player player = Main.player[NPC.target];
+            int damage = NPC.damage;
+            var entitySource = NPC.GetSource_FromAI();
+            NPC.velocity = Vector2.Zero;
+            Projectile.NewProjectile(entitySource, NPC.Center, NPC.DirectionTo(player.Center) * 6, ModContent.ProjectileType<DarknessBlast>(), damage, 0f, Main.myPlayer);
+        }
+        private void SlowBlast()
+        {
+            Player player = Main.player[NPC.target];
+            int damage = NPC.damage;
+            var entitySource = NPC.GetSource_FromAI();
+            NPC.velocity = Vector2.Zero;
+            Projectile.NewProjectile(entitySource, NPC.Center, NPC.DirectionTo(player.Center) * 6, ModContent.ProjectileType<ConfusedBlast>(), damage, 0f, Main.myPlayer);
+        }
         private void BlastBarrage()
         {
             Player player = Main.player[NPC.target];
@@ -130,7 +276,42 @@ namespace WorldsCollide.Npcs.Bosses
                 Projectile.NewProjectile(entitySource, NPC.Center, NPC.DirectionTo(player.Center).RotatedByRandom(MathHelper.ToRadians(35)) * 8, ModContent.ProjectileType<GhostBlast>(), damage, 0f, Main.myPlayer);
             }
         }
-       
+       private void CursedBarrage()
+        {
+            Player player = Main.player[NPC.target];
+            int damage = NPC.damage;
+            var entitySource = NPC.GetSource_FromAI();
+            const int NumProjectiles = 4;
+            NPC.velocity = Vector2.Zero;
+            for (int i = 0; i < NumProjectiles; i++)
+            {
+                Projectile.NewProjectile(entitySource, NPC.Center, NPC.DirectionTo(player.Center).RotatedByRandom(MathHelper.ToRadians(35)) * 8, ModContent.ProjectileType<CursedBlast>(), damage, 0f, Main.myPlayer);
+            }
+        }
+        private void ConfusedBarrage()
+        {
+            Player player = Main.player[NPC.target];
+            int damage = NPC.damage;
+            var entitySource = NPC.GetSource_FromAI();
+            const int NumProjectiles = 4;
+            NPC.velocity = Vector2.Zero;
+            for (int i = 0; i < NumProjectiles; i++)
+            {
+                Projectile.NewProjectile(entitySource, NPC.Center, NPC.DirectionTo(player.Center).RotatedByRandom(MathHelper.ToRadians(35)) * 8, ModContent.ProjectileType<ConfusedBlast>(), damage, 0f, Main.myPlayer);
+            }
+        }
+        private void DarkBarrage()
+        {
+            Player player = Main.player[NPC.target];
+            int damage = NPC.damage;
+            var entitySource = NPC.GetSource_FromAI();
+            const int NumProjectiles = 4;
+            NPC.velocity = Vector2.Zero;
+            for (int i = 0; i < NumProjectiles; i++)
+            {
+                Projectile.NewProjectile(entitySource, NPC.Center, NPC.DirectionTo(player.Center).RotatedByRandom(MathHelper.ToRadians(35)) * 8, ModContent.ProjectileType<DarknessBlast>(), damage, 0f, Main.myPlayer);
+            }
+        }
         public override void FindFrame(int frameHeight)
         {
             NPC.spriteDirection = -NPC.direction;
@@ -146,7 +327,15 @@ namespace WorldsCollide.Npcs.Bosses
             }
 
         }
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.BossBag(ModContent.ItemType<TreasureBag>()));
+            if(!Main.expertMode && Main.masterMode)
+            {
 
+            }
+
+        }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)
         {
             // We can use AddRange instead of calling Add multiple times in order to add multiple items at once
