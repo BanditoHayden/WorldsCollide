@@ -10,12 +10,10 @@ using WorldsCollide.Projectiles.Melee;
 
 namespace WorldsCollide.Items.Weapons.Melee
 {
-    public class Rebellion : ModItem
+    public class BigSting : ModItem
     {
-        int currentAttack = 1;
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("[c/8b0000:This Party's Getting Crazy! Let's Rock!]");
         }
         public override void SetDefaults()
         {
@@ -24,7 +22,6 @@ namespace WorldsCollide.Items.Weapons.Melee
 
             Item.width = 60;
             Item.height = 60;
-           Item.scale = 1.3f;
             // Use Properties
             Item.useStyle = ItemUseStyleID.Swing;
             Item.useAnimation = 25;
@@ -35,10 +32,15 @@ namespace WorldsCollide.Items.Weapons.Melee
             Item.damage = 20;
             Item.knockBack = 5f;
             Item.DamageType = DamageClass.Melee;
+            Item.noMelee = false;
             // Projectile Properties
-
+            Item.shootSpeed = 10;
+            Item.shoot = ProjectileID.GiantBee;
         }
-
-
+       
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        {
+           // Projectile.NewProjectile(Item.GetSource_OnHit(target), target.Center.X, target.Center.Y + Main.rand.Next(1, 30), 0f, 0f, ProjectileID.Bee, damage, knockBack, player.whoAmI);
+        }
     }
 }

@@ -22,27 +22,31 @@ namespace WorldsCollide.Items.Weapons.Melee
 		{
 			Item.useStyle = ItemUseStyleID.Shoot; 
 			Item.width = 24;
-
             Item.height = 24;
 			Item.useAnimation = 25;
 			Item.useTime = 25;
 			Item.shootSpeed = 16f;
 			Item.knockBack = 2.5f;
-			Item.damage = 9;
+			Item.damage = 12;
 			Item.rare = ItemRarityID.White;
-
 			Item.DamageType = DamageClass.Melee;
 			Item.channel = true;
 			Item.noMelee = true;
 			Item.noUseGraphic = true;
-
 			Item.UseSound = SoundID.Item1;
 			Item.value = Item.sellPrice(silver: 1);
 			Item.shoot = ProjectileType<StormProj>();
 		}
+		public override void AddRecipes()
+		{
+			CreateRecipe()
+		   .AddIngredient(ItemID.Cloud, 13)
+			.AddIngredient(ItemID.RainCloud, 13)
+		   .AddTile(TileID.Anvils)
+		   .Register();
+		}
 
 
 
-	
 	}
 }
