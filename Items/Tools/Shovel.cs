@@ -1,8 +1,8 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using WorldsCollide.Items.Materials;
 using WorldsCollide.Assets.Common;
+using WorldsCollide.Items.Materials;
 
 namespace WorldsCollide.Items.Tools
 {
