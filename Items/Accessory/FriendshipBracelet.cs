@@ -8,7 +8,7 @@ namespace WorldsCollide.Items.Accessory
     {
         public override void SetStaticDefaults()
         {
-            Tooltip.SetDefault("+25 Max Mana");
+            Tooltip.SetDefault("+5% Summon Damage");
         }
 
         public override void SetDefaults()
@@ -16,12 +16,11 @@ namespace WorldsCollide.Items.Accessory
             Item.accessory = true;
             Item.value = Item.sellPrice(0, 1, 0, 0);
             Item.rare = 2;
-            Item.DefaultToWhip;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.statManaMax2 += 25;
+            player.GetDamage(DamageClass.Summon) += 0.05f;
         }
     }
 }
