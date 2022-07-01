@@ -8,9 +8,10 @@ namespace WorldsCollide.Projectiles.Melee
 	{
 		public override void SetStaticDefaults()
 		{
-			ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 3.5f;
+			ProjectileID.Sets.YoyosLifeTimeMultiplier[Projectile.type] = 2.5f;
 			ProjectileID.Sets.YoyosMaximumRange[Projectile.type] = 200f;
 			ProjectileID.Sets.YoyosTopSpeed[Projectile.type] = 15f;
+	
 		}
 		public override void SetDefaults()
 		{

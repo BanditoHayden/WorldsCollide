@@ -20,7 +20,6 @@ namespace WorldsCollide.Projectiles.Magic
 			Projectile.DamageType  = DamageClass.Magic;
 			Projectile.penetrate = 3;
 			Projectile.timeLeft = 600;
-			Projectile.scale = 0.7f;
 		}
 		public override void AI()
 		{

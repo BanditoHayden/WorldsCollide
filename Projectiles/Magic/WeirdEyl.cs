@@ -23,14 +23,9 @@ namespace WorldsCollide.Projectiles.Magic
 		}
 
         public override void AI()
-        {
-
+        {		
 			Projectile.position.X += (float)Math.Sin(Projectile.timeLeft / 6) * 0.5f;
 			Projectile.position.Y += (float)Math.Cos(Projectile.timeLeft / 6) * 0.5f;
-
-
-			Projectile.ai[0] += 1f;
-            
         }
 
         public override void Kill(int timeLeft)
