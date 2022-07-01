@@ -1,3 +1,4 @@
+﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using WorldsCollide.Items.Weapons.Melee;
 
 namespace WorldsCollide.Assets.Common
 {
-    public class ItemToChest : ModSystem
+	public class ItemToChest : ModSystem
     {
 		public override void PostWorldGen()
 		{

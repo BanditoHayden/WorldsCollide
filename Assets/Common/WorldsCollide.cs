@@ -5,12 +5,17 @@ using Terraria.ID;
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
+using WorldsCollide.Items.Materials;
+using Terraria.Localization;
+using System.Collections.Generic;
+using Terraria.GameContent;
 
 namespace WorldsCollide.Assets.Common
 {
-	public class WorldsCollide : Mod
+    public class WorldsCollide : Mod
 	{
-	public static Dictionary<int, int> oreTileToItem;
+        private Asset<Texture2D> oldTexture;
+        public static Dictionary<int, int> oreTileToItem;
         public static Dictionary<int, int> oreItemToTile;
         public override void Load()
         {
@@ -21,13 +26,18 @@ namespace WorldsCollide.Assets.Common
                 Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.VeryHigh);
                 Filters.Scene["Shockwave"].Load();
             }
-	    oreTileToItem = new Dictionary<int, int>();
+            oreTileToItem = new Dictionary<int, int>();
             oreItemToTile = new Dictionary<int, int>();
+            oldTexture = TextureAssets.Item[ItemID.BladeofGrass];
+            TextureAssets.Item[ItemID.BladeofGrass] = ModContent.Request<Texture2D>("WorldsCollide/Assets/Vanilla/BladeofGrass2");
+
         }
-	public override void Unload()
+
+        public override void Unload()
         {
             oreTileToItem = null;
             oreItemToTile = null;
+            TextureAssets.Item[ItemID.BladeofGrass] = oldTexture;
         }
         public override void PostSetupContent()
         {
@@ -50,7 +60,7 @@ namespace WorldsCollide.Assets.Common
                 }
             }
         }
-	public static RecipeGroup Fishes;
+        public static RecipeGroup Fishes;
         public override void AddRecipeGroups()
         {
             // Create a recipe group and store it
@@ -59,51 +69,51 @@ namespace WorldsCollide.Assets.Common
                 ItemID.Bass, ItemID.CrimsonTigerfish,ItemID.Damselfish, ItemID.DoubleCod, ItemID.Ebonkoi, ItemID.Flounder, ItemID.GoldenCarp, ItemID.Hemopiranha, ItemID.Honeyfin, ItemID.NeonTetra, ItemID.RedSnapper, ItemID.Salmon, ItemID.Shrimp, ItemID.Trout, ItemID.Tuna);
             RecipeGroup.RegisterGroup("WorldsCollide:Fishes", Fishes);
         }
-    	public override void AddRecipes()
+        public override void AddRecipes()
         {
-           
 
-            CreateRecipe(ModContent.ItemType<Chum>(), 3)
+           
+            Recipe.Create(ModContent.ItemType<Chum>())                
            .AddRecipeGroup("WorldsCollide:Fishes", 1)
            .AddTile(TileID.Extractinator)
            .Register();
 
-            CreateRecipe(ItemID.HighTestFishingLine, 1)
+            Recipe.Create(ItemID.HighTestFishingLine)
             .AddIngredient(ModContent.ItemType<Chum>(), 30)
             .AddIngredient(ItemID.Cobweb, 20)
             .AddTile(TileID.TinkerersWorkbench)
             .Register();
 
-            CreateRecipe(ItemID.TackleBox, 1)
+            Recipe.Create(ItemID.TackleBox)
            .AddIngredient(ModContent.ItemType<Chum>(), 30)
            .AddIngredient(ItemID.Wood, 20)
            .AddTile(TileID.TinkerersWorkbench)
            .Register();
 
-           CreateRecipe(ItemID.AnglerEarring, 1)
+            Recipe.Create(ItemID.AnglerEarring)
+            .AddIngredient(ModContent.ItemType<Chum>(), 30)
+            .AddRecipeGroup(RecipeGroupID.IronBar, 12)
+            .AddTile(TileID.TinkerersWorkbench)
+            .Register();
+
+            Recipe.Create(ItemID.FishermansGuide)
+           .AddIngredient(ModContent.ItemType<Chum>(), 30)
+           .AddTile(TileID.TinkerersWorkbench)
+           .Register();
+
+            Recipe.Create(ItemID.Sextant)
            .AddIngredient(ModContent.ItemType<Chum>(), 30)
            .AddRecipeGroup(RecipeGroupID.IronBar, 12)
            .AddTile(TileID.TinkerersWorkbench)
            .Register();
 
-            CreateRecipe(ItemID.FishermansGuide, 1)
-           .AddIngredient(ModContent.ItemType<Chum>(), 30)
-           .AddTile(TileID.TinkerersWorkbench)
-           .Register();
-
-            CreateRecipe(ItemID.Sextant, 1)
+            Recipe.Create(ItemID.WeatherRadio)
            .AddIngredient(ModContent.ItemType<Chum>(), 30)
            .AddRecipeGroup(RecipeGroupID.IronBar, 12)
            .AddTile(TileID.TinkerersWorkbench)
            .Register();
 
-            CreateRecipe(ItemID.WeatherRadio, 1)
-           .AddIngredient(ModContent.ItemType<Chum>(), 30)
-           .AddRecipeGroup(RecipeGroupID.IronBar, 12)
-           .AddTile(TileID.TinkerersWorkbench)
-           .Register();
-
-            CreateRecipe(ItemID.LavaFishingHook, 1)
+            Recipe.Create(ItemID.LavaFishingHook)
             .AddIngredient(ModContent.ItemType<Chum>(), 30)
             .AddIngredient(ItemID.Obsidian, 30)
             .AddTile(TileID.TinkerersWorkbench)

@@ -18,7 +18,6 @@ namespace WorldsCollide.Assets.Common
         public bool Pickaxe = false;
         public bool StrengthMedallion;
         public bool Diplopia;
-
         public override void ResetEffects()
         {
             StrengthMedallion = false;
