@@ -10,7 +10,7 @@ using WorldsCollide.Items.Materials;
 
 namespace WorldsCollide.Items.Weapons.Magic
 {
-    public class GhostlyWand : ModItem
+    public class OracleWand : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -23,34 +23,31 @@ namespace WorldsCollide.Items.Weapons.Magic
             Item.width = 30;
             Item.height = 30;
             Item.scale = 1.0f;
-            Item.noMelee = true;
-
             // Use Properties
             Item.useTime = 25;
             Item.useAnimation = 25;
             Item.useStyle = ItemUseStyleID.Swing;
             Item.UseSound = SoundID.Item8;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
+            Item.noMelee = true;
             // Weapon Properties
-            Item.damage = 12;
+            Item.damage = 16;
             Item.knockBack = 3f;
             Item.DamageType = DamageClass.Magic;
-            Item.mana = 2;
+            Item.mana = 6;
             // Projectile Properties
-            Item.shoot = ModContent.ProjectileType<GhostBall>();
-            Item.shootSpeed = 8f;
+            Item.shoot = ModContent.ProjectileType<Oracle>();
+            Item.shootSpeed = 3f;
+            
         }
         public override void AddRecipes()
         {
             CreateRecipe()
-           .AddIngredient(ModContent.ItemType<GhostlyCloth>(), 3)
-           .AddIngredient(ItemID.Wood, 12)
+           .AddIngredient(ItemID.FallenStar, 12)
+           .AddIngredient(ItemID.DemoniteBar, 13)
            .AddTile(TileID.WorkBenches)
            .Register();
         }
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
+
     }
 }

@@ -28,6 +28,7 @@ namespace WorldsCollide.Items.Weapons.Magic
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.UseSound = SoundID.Item20;
             Item.autoReuse = true;
+            Item.noMelee = true;
             // Weapon Properties
             Item.damage = 25;
             Item.knockBack = 5.6f;
