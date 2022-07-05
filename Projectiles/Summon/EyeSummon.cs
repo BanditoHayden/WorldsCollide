@@ -122,31 +122,25 @@ namespace WorldsCollide.Projectiles.Summon
 			else
 			{
 				Projectile.rotation = (player.Center - Projectile.Center).ToRotation();
-				// Minion doesn't have a target: return to player and idle
 				if (distanceToIdlePosition > 600f)
 				{
-					// Speed up the minion if it's away from the player
 					speed = 12f;
 					inertia = 60f;
 				}
 				else
 				{
-					// Slow down the minion if closer to the player
 					speed = 2f;
 					inertia = 80f;
 				}
 
 				if (distanceToIdlePosition > 20f)
 				{
-					// The immediate range around the player (when it passively floats about)
-
 					vectorToIdlePosition.Normalize();
 					vectorToIdlePosition *= speed;
 					Projectile.velocity = (Projectile.velocity * (inertia - 1) + vectorToIdlePosition) / inertia;
 				}
 				else if (Projectile.velocity == Vector2.Zero)
 				{
-					// If there is a case where it's not moving at all, give it a little "poke"
 					Projectile.velocity.X = -0.15f;
 					Projectile.velocity.Y = -0.05f;
 				}
