@@ -40,13 +40,30 @@ namespace WorldsCollide.Projectiles.Magic
 			Projectile.rotation = Projectile.velocity.ToRotation();
 
 			Projectile.ai[0] += 1f;
-
+			int Dusty = Dust.NewDust(Projectile.position, 15, 15, DustID.CrimsonTorch, 0f, 0f, 100, new Color(0, 200, 0), 1f);
+			Dust obj = Main.dust[Dusty];
+			obj.noGravity = true;
+			obj.position.X -= Projectile.velocity.X * 0.2f;
+			obj.position.Y += Projectile.velocity.Y * 0.2f;
+		}
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+			for (int i = 0; i < 3; i++)
+			{
+				
+				Dust dusty = Dust.NewDustPerfect(Projectile.position, DustID.RedMoss, Scale: 0.7f);
+			}
 		}
 
-		public override void Kill(int timeLeft)
+        public override void Kill(int timeLeft)
 		{
 			SoundEngine.PlaySound(SoundID.NPCDeath4, Projectile.position);
-
+			for (int i = 0; i < 50; i++)
+			{
+				Vector2 outerdustring = Main.rand.NextVector2CircularEdge(1f, 1f);
+				Dust dusty = Dust.NewDustPerfect(Projectile.position, DustID.RedMoss, outerdustring * 5, Scale: 1.5f);
+				dusty.noGravity = true;
+			}
 		}
 
 
