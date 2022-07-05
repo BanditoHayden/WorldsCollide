@@ -12,7 +12,7 @@ namespace WorldsCollide.Items.Weapons.Melee
 		{
 			
 			SacrificeTotal = 1;
-
+			DisplayName.SetDefault("Sticky Hand");
 			
 			ItemID.Sets.ToolTipDamageMultiplier[Type] = 2f;
 		}
@@ -30,7 +30,7 @@ namespace WorldsCollide.Items.Weapons.Melee
 			Item.shoot = ModContent.ProjectileType<SlapHandProj>(); 
 			Item.shootSpeed = 12f; 
 			Item.UseSound = SoundID.Item1; 
-			Item.rare = ItemRarityID.Orange; 
+			Item.rare = 2; 
 			Item.value = Item.sellPrice(gold: 2, silver: 50);
 			Item.DamageType = DamageClass.Melee; 
 			Item.channel = true;

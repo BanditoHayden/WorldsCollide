@@ -35,7 +35,5 @@ namespace WorldsCollide.Items.Weapons.Melee
             // Projectile Properties
             // Need sprites
         }
-
-
     }
 }
