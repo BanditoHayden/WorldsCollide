@@ -28,7 +28,6 @@ namespace WorldsCollide.Projectiles.Magic
 		public override void AI()
 		{
 
-			var waveVelocity = new Vector2((float)Math.Cos(Projectile.ai[0]), (float)Math.Sin(Projectile.ai[0]));
 			Projectile.position.X += (float)Math.Sin(Projectile.timeLeft / 6) * 0.5f;
 			Projectile.position.Y += (float)Math.Cos(Projectile.timeLeft / 6) * 0.5f;
 			if (++Projectile.frameCounter >= 10)
