@@ -34,8 +34,7 @@ namespace WorldsCollide.Items.Weapons.Melee
             Item.useAnimation = 30;
             Item.useTime = 30;
             Item.UseSound = SoundID.Item1;
-            Item.autoReuse = false;
-            Item.scale = 1.4f;
+            Item.autoReuse = true;
             // Weapon Properties
             Item.damage = 30;
             Item.knockBack = 6f;
