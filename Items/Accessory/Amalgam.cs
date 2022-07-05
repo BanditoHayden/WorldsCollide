@@ -22,7 +22,7 @@ namespace WorldsCollide.Items.Accessory
         {
             player.brainOfConfusionItem = Item;
             player.endurance += 0.17f;
-          }
+        }
         public override void AddRecipes()
         {
             CreateRecipe()

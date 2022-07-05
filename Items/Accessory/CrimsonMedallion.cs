@@ -14,7 +14,7 @@ namespace WorldsCollide.Items.Accessory
         public override void SetDefaults()
         {
             Item.accessory = true;
-            Item.value = Item.sellPrice(0, 1, 0, 0);
+            Item.value = Item.sellPrice(0, 5, 0, 0);
             Item.rare = 2;
         }
 
