@@ -27,19 +27,20 @@ namespace WorldsCollide.Items.Weapons.Melee
             Item.scale = 1.3f;
             Item.noUseGraphic = true;
             // Use Properties
-            Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useAnimation = 60;
-            Item.useTime = 60;
+            Item.useStyle = 5;
+            Item.useAnimation = 21;
+            Item.useTime = 21;
             Item.UseSound = SoundID.Item1;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
             // Weapon Properties
             Item.damage = 18;
             Item.knockBack = 5f;
             Item.DamageType = DamageClass.Melee;
             Item.noMelee = true;
+            Item.channel = true;
             // Projectile Properties
             Item.shoot = ModContent.ProjectileType<PencilHeld>();
-            Item.shootSpeed = 4f;
+            Item.shootSpeed = 6f;
 
         }
         public override void AddRecipes()

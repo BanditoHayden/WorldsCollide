@@ -38,7 +38,7 @@ namespace WorldsCollide.Items.Weapons.Melee
         {
             if (npc.life <= 0)
             {
-                player.AddBuff(ModContent.BuffType<Empowered>(), 180, true);
+               // player.AddBuff(ModContent.BuffType<Empowered>(), 180, true);
             }
         }
        

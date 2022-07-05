@@ -30,7 +30,7 @@ namespace WorldsCollide.Assets.Common
             oreItemToTile = new Dictionary<int, int>();
             oldTexture = TextureAssets.Item[ItemID.BladeofGrass];
             TextureAssets.Item[ItemID.BladeofGrass] = ModContent.Request<Texture2D>("WorldsCollide/Assets/Vanilla/BladeofGrass2");
-
+            BaseIdleHoldoutProjectile.LoadAll();
         }
 
         public override void Unload()
