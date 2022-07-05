@@ -2,6 +2,7 @@
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
+using WorldsCollide.Items.Accessory;
 using WorldsCollide.Items.Materials;
 using WorldsCollide.Items.Weapons.Magic;
 using WorldsCollide.Items.Weapons.Melee;
@@ -55,7 +56,41 @@ namespace WorldsCollide.Assets.Common
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeStaff>(), 30));
             }
-            
+            if (npc.type == NPCID.Frog)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeStaff>(), 50));
+            }
+            if (npc.type == NPCID.GoldFrog)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EyeStaff>(), 10));
+            }
+            if (npc.type == NPCID.BlueJellyfish)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FriendshipBracelet>(), 30));
+            }
+            if (npc.type == NPCID.GreenJellyfish)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FriendshipBracelet>(), 30));
+            }
+            if (npc.type == NPCID.PinkJellyfish)
+            {
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<FriendshipBracelet>(), 30));
+            }
+        }
+        public override void SetupShop(int type, Chest shop, ref int nextSlot)
+        {
+            if (type == NPCID.Merchant)
+            {
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<ViridianMedallion>());
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<CeruleanMedalion>());
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<CrimsonMedallion>());
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<StrengthMedallion>());
+                nextSlot++;
+            }
         }
     }
+    
 }
