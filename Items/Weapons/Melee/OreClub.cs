@@ -29,7 +29,7 @@ namespace WorldsCollide.Items.Weapons.Melee
             Item.useAnimation = 120;
             Item.useTime = 120;
             Item.UseSound = SoundID.Item1;
-            Item.autoReuse = false;
+            Item.autoReuse = true;
             // Weapon Properties
             Item.damage = 48;
             Item.knockBack = 6f;
