@@ -39,7 +39,7 @@ namespace WorldsCollide.Assets.Common
         }
         public override bool Shoot(Item item, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            if (Bumble)
+            if (Bumble && item.CountsAsClass(DamageClass.Ranged))
             {
                 const int NumProjectiles = 1;
                 if (Player.strongBees)
