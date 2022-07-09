@@ -47,7 +47,7 @@ namespace WorldsCollide.Projectiles.Melee
         public void AttachToPlayer() // the actual AI
         {
             Player player = Main.player[Projectile.owner];
-            if (!player.active || player.dead || player.CCed || player.noItems) //Kills the projectile if one of these conditions are met
+            if (!player.active || player.dead || player.CCed || player.noItems) 
             {
                 return;
             }

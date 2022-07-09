@@ -26,6 +26,7 @@ namespace WorldsCollide.Projectiles.Melee
             Projectile.width = 60;
             Projectile.friendly = true;
             Projectile.scale = 1.2f;
+            Projectile.ownerHitCheck = true;
         }
         public virtual float Lerp(float val)
         {
