@@ -13,13 +13,14 @@ using Terraria.GameContent;
 namespace WorldsCollide.Assets.Common
 {
     public class WorldsCollide : Mod
-	{
+    {
         private Asset<Texture2D> oldTexture;
         public static Dictionary<int, int> oreTileToItem;
         public static Dictionary<int, int> oreItemToTile;
         public override void Load()
         {
             Helpers.Sets.Initialize();
+            PickaxeNerf.Sets.Initialize();
             if (Main.netMode != NetmodeID.Server)
             {
                 Ref<Effect> screenRef = new Ref<Effect>(ModContent.Request<Effect>("WorldsCollide/Assets/Effects/ShockwaveEffect", AssetRequestMode.ImmediateLoad).Value);
@@ -66,14 +67,12 @@ namespace WorldsCollide.Assets.Common
             // Create a recipe group and store it
             // Language.GetTextValue("LegacyMisc.37") is the word "Any" in english, and the corresponding word in other languages
             Fishes = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.Fish)}",
-                ItemID.Bass, ItemID.CrimsonTigerfish,ItemID.Damselfish, ItemID.DoubleCod, ItemID.Ebonkoi, ItemID.Flounder, ItemID.GoldenCarp, ItemID.Hemopiranha, ItemID.Honeyfin, ItemID.NeonTetra, ItemID.RedSnapper, ItemID.Salmon, ItemID.Shrimp, ItemID.Trout, ItemID.Tuna);
+                ItemID.Bass, ItemID.CrimsonTigerfish, ItemID.Damselfish, ItemID.DoubleCod, ItemID.Ebonkoi, ItemID.Flounder, ItemID.GoldenCarp, ItemID.Hemopiranha, ItemID.Honeyfin, ItemID.NeonTetra, ItemID.RedSnapper, ItemID.Salmon, ItemID.Shrimp, ItemID.Trout, ItemID.Tuna);
             RecipeGroup.RegisterGroup("WorldsCollide:Fishes", Fishes);
         }
         public override void AddRecipes()
         {
-
-           
-            Recipe.Create(ModContent.ItemType<Chum>())                
+            Recipe.Create(ModContent.ItemType<Chum>())
            .AddRecipeGroup("WorldsCollide:Fishes", 1)
            .AddTile(TileID.Extractinator)
            .Register();
